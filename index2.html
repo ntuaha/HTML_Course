@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <style>
+  #target{ font-size:12px ; color:green;}
+  </style>
+</head>
+<body>
+  <div id="target">芭樂</div>
+</body>
+<script>
+  var size = 100;
+  function uncertainly(){
+    if(size > 0){
+      document.getElementById("target").style.fontSize = size + "px";
+      size = size-2;
+      setTimeout(function(){ uncertainly();},100);
+    }
+  }
+  uncertainly();
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+    var data = [
+      {name:"A",value:"1"},
+      {name:"B",value:"2"},
+      {name:"C",value:"1"},
+      {name:"D",value:"4"},
+      {name:"E",value:"6"},
+      {name:"F",value:"7"},
+    ];
+    var data2 = [
+      {name:"A",value:"7"},
+      {name:"B",value:"6"},
+      {name:"C",value:"4"},
+      {name:"D",value:"1"},
+      {name:"E",value:"3"},
+      {name:"F",value:"2"},
+    ];
+      $(function(){
+        var hist = d3.select("body").selectAll("div").data(data)
+        .enter().append("div");
+        hist
+        .style("height","30px")
+        .style("width","0px")
+        .style("border","1px solid green")
+        .text(function(d){return d.name});
+
+        hist
+        .transition().duration(750)
+        .delay(function(d,i){
+          console.log(i);
+          return i*10;})
+        .style("width",function(d){return (d.value*50)+"px"});
+
+        $("body").click(function(){
+          hist.data(data2).enter().append("div");
+
+
+
+
+
+
+        });
+
+
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
