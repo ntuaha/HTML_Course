@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <!-- Microsoft CDN-->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.10.2.min.js"></script>
+    <style>
+      #aha{
+        border:1px solid black;
+      }
+    </style>
+    <script>
+      $(function(){
+        //Part 1
+        $("#aha").click(function(){
+          $(this).css({"color":"red"});
+        });
+
+        //Part 2
+        $("#test").keyup(function(){
+          if($("#test").val()=="aha"){
+            $("#test").css({"color":"green"});
+          }else{
+            $("#test").css({"color":"red"});
+          }
+        });
+
+        //Part3
+        $("#ajax").click(function(){
+          $.ajax({
+            url:'http://ga-saw.cloudapp.net/news/api/date/2015-3-7',
+            dataType:"jsonp"
+          }).done(function(data){
+            console.log(data);
+            for(var i in data.data){
+              $("<tr><td>"+data.data[i].title+"</td><td>"+data.data[i].link+"</td></tr>").appendTo($("#result"));
+            }
+          });
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <div id="aha">林鉦育</div>
+    <input id="test" type="text" value="" placeholder="請輸入"/>
+    <input id="ajax" type="button" value="click me"/>
+    <table id="result">
+    </table>
+  </body>
+</html>
+

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.10.2.min.js"></script>
+    <script>
+    $(function(){
+        $("button").click(function(){
+          $.ajax({
+            url:'http://ga-saw.cloudapp.net/news/api/date/2015-3-7',
+            dataType:"jsonp"
+          }).done(function(data){
+            console.log(data);
+            for(var i in data.data){
+              $("<tr><td>"+data.data[i].title+"</td><td>"+data.data[i].link+"</td></tr>").appendTo($("#result"));
+            }
+          });
+        });
+    });
+    </script>
+  </head>
+  <body>
+  <div class="container">
+    <h2 id="aha">林鉦育 <small>aha</small></h2>
+    <div class="row">
+      <input id="test" class="form-control" type="text" value="" placeholder="請輸入"/>
+      <button type="submit" class="btn btn-default col-md-12">click me</button>
+    </div>
+    <div class="row">
+      <table id="result" class="table-bordered table">
+      </table>
+    </div>
+  </div>
+
+
+  </body>
+</html>
