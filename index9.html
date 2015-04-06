@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+    $(function(){
+      //TODO
+      $("#a")
+      .css({"color":"green"})
+      .css({"font-size":"20pt"})
+      .text("HI")
+      .click(function(){
+        //alert("幹嘛點我");
+        $("#b").css({"color":"black"});
+        $("body").append($("<div>HI</div>"));
+      })
+      .mouseover(function(){
+        $(this).css({"color":"black"});
+
+      })
+      .mouseout(function(){
+        $("#a").css({"color":"green"});
+      });
+
+    });
+    </script>
+    <style>
+    #b{color:blue;font-size:50pt;}
+    </style>
+  </head>
+  <body>
+      <div id="a">a</div>
+      <div id="b">hi</div>
+
+  </body>
+
+</html>
